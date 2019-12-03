@@ -32,5 +32,11 @@
         android:key="spoofing"
         android:title="@string/spoofing_title"
         android:fragment="com.power.hub.fragments.Spoofing" />
+
+    <com.voltage.support.preferences.SystemSettingSwitchPreference
+        android:key="notification_sound_vib_screen_on"
+        android:title="@string/notification_sound_vib_screen_on_title"
+        android:summary="@string/notification_sound_vib_screen_on_summary"
+        android:defaultValue="true" />
 		
 </PreferenceScreen>
