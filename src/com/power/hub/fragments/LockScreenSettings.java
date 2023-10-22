@@ -43,6 +43,7 @@ import android.provider.Settings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.util.voltage.VoltageUtils;
+import com.android.internal.util.voltage.udfps.CustomUdfpsUtils;
 import com.voltage.support.preferences.SystemSettingListPreference;
 import com.voltage.support.preferences.CustomSeekBarPreference;
 import com.voltage.support.preferences.SecureSettingListPreference;
@@ -68,9 +69,11 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mFingerprintErrorVib;
 
     private static final String KEY_WEATHER = "lockscreen_weather_enabled";
+    private static final String UDFPS_CATEGORY = "udfps_category";
 
     private Preference mWeather;
     private OmniJawsClient mWeatherClient;
+    private PreferenceCategory mUdfpsCategory;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -102,10 +105,13 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             prefSet.removePreference(mFingerprintSuccessVib);
             prefSet.removePreference(mFingerprintErrorVib);
         }
-
        mWeather = (Preference) findPreference(KEY_WEATHER);
        mWeatherClient = new OmniJawsClient(getContext());
        updateWeatherSettings();
+        mUdfpsCategory = findPreference(UDFPS_CATEGORY);
+        if (!CustomUdfpsUtils.hasUdfpsSupport(getContext())) {
+            prefSet.removePreference(mUdfpsCategory);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
