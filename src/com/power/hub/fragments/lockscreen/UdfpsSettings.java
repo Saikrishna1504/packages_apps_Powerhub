@@ -44,10 +44,17 @@ import com.android.internal.util.voltage.VoltageUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.power.hub.fragments.lockscreen.UdfpsAnimation;
+import com.power.hub.fragments.lockscreen.UdfpsIconPicker;
+
 public class UdfpsSettings extends SettingsPreferenceFragment {
 
+    private static final String KEY_UDFPS_ICONS = "udfps_icon_picker";
+    private static final String KEY_UDFPS_ANIMATIONS = "udfps_recognizing_animation_preview";
     private static final String SCREEN_OFF_UDFPS_ENABLED = "screen_off_udfps_enabled";
 
+    private Preference mUdfpsIcons;
+    private Preference mUdfpsAnimations;
     private Preference mScreenOffUdfps;
 
     @Override
@@ -57,6 +64,15 @@ public class UdfpsSettings extends SettingsPreferenceFragment {
 
         final PreferenceScreen prefSet = getPreferenceScreen();
         Resources resources = getResources();
+
+        final boolean udfpsResPkgInstalled = VoltageUtils.isPackageInstalled(getContext(),
+                "com.power.hub.udfps.animations");
+        mUdfpsIcons = findPreference(KEY_UDFPS_ICONS);
+        mUdfpsAnimations = findPreference(KEY_UDFPS_ANIMATIONS);
+        if (!udfpsResPkgInstalled) {
+            prefSet.removePreference(mUdfpsIcons);
+            prefSet.removePreference(mUdfpsAnimations);
+        }
 
         mScreenOffUdfps = (Preference) prefSet.findPreference(SCREEN_OFF_UDFPS_ENABLED);
         boolean screenOffUdfpsAvailable = resources.getBoolean(

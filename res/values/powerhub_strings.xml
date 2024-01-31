@@ -50,6 +50,7 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="default_string">Default</string>
+    <string name="disable">Disable</string>
     <string name="disabled">Disabled</string>
 
     <!-- Units -->
@@ -471,4 +472,12 @@
     <!-- Screen off UDFPS -->
     <string name="screen_off_udfps_title">Screen off UDFPS</string>
     <string name="screen_off_udfps_summary">Keep UDFPS enabled when the screen is off</string>
+
+    <!-- UDFPS Icon Picker -->
+    <string name="udfps_icon_picker_title">UDFPS icon picker</string>
+    <string name="udfps_icon_picker_summary">Choose your favorite fingerprint icon</string>
+
+    <!-- UDFPS Animations -->
+    <string name="udfps_recog_animation_effect_title">UDFPS custom animation</string>
+    <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
 </resources>
