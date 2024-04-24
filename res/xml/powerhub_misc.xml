@@ -27,5 +27,10 @@
         android:key="pulse_settings"
         android:title="@string/pulse_settings"
         android:fragment="com.power.hub.fragments.PulseSettings" />
+
+     <Preference
+        android:key="spoofing"
+        android:title="@string/spoofing_title"
+        android:fragment="com.power.hub.fragments.Spoofing" />
 		
 </PreferenceScreen>

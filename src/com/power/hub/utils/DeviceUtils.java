@@ -44,7 +44,11 @@ import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.Surface;
 import java.util.List;
+import java.util.Arrays;
 public class DeviceUtils {
+
+    private static final String DEVICE = "ro.voltage.device";
+
     /* returns whether the device has a centered display cutout or not. */
     public static boolean hasCenteredCutout(Context context) {
         Display display = context.getDisplay();
@@ -169,6 +173,34 @@ public class DeviceUtils {
         return NAV_BAR_MODE_GESTURAL == context.getResources().getInteger(
                 com.android.internal.R.integer.config_navBarInteractionMode);
     }
+
+    private static final String[] currentlySupportedPixels = {
+            "rango",
+            "mustang",
+            "blazer",
+            "frankel",
+            "komodo",
+            "caiman",
+            "tokay",
+            "comet",
+            "akita",
+            "husky",
+            "shiba",
+            "felix",
+            "tangorpro",
+            "lynx",
+            "cheetah",
+            "panther",
+            "bluejay",
+            "oriole",
+            "raven",
+            "barbet"
+    };
+    public static boolean isCurrentlySupportedPixel() {
+        String deviceCodename = SystemProperties.get(DEVICE);
+        return Arrays.asList(currentlySupportedPixels).contains(deviceCodename);
+    }
+
     public static boolean isBlurSupported() {
         boolean blurSupportedSysProp = SystemProperties
             .getBoolean("ro.surface_flinger.supports_background_blur", false);
@@ -187,5 +219,6 @@ public class DeviceUtils {
         final List<FingerprintSensorPropertiesInternal> props =
                 fingerprintManager.getSensorPropertiesInternal();
         return props != null && props.size() == 1 && props.get(0).isAnyUdfpsType();
+
     }
 }
