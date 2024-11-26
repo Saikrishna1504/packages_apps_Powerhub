@@ -29,6 +29,11 @@
                 android:targetClass="com.goolag.pif.PifActivity" />
         </Preference>
 
+        <Preference
+            android:key="pif_json_file_preference"
+            android:title="@string/pif_spoofing_title"
+            android:summary="@string/pif_spoofing_summary"/>
+
         <!-- Pixel props -->
         <com.voltage.support.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pphooks.enable"

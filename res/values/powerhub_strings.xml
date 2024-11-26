@@ -419,4 +419,8 @@
     <string name="spoofing_snap_title">Snapchat spoof</string>
     <string name="spoofing_snap_summary">Spoof Snapchat as a Pixel XL to fix possible chat issues</string>
 	
+    <!-- PIF spoofing -->
+    <string name="pif_spoofing_title">Select PIF JSON File</string>
+    <string name="pif_spoofing_summary">Pick PIF JSON file to be used for spoofing play integrity</string>
+
 </resources>
